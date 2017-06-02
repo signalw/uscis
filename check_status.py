@@ -17,7 +17,7 @@ Options:
         The number of cases ahead of and after the CASE_NUM.
 """
 
-import argparse, requests, multiprocessing, sys, warnings
+import argparse, requests, sys, warnings
 from bs4 import BeautifulSoup
 
 warnings.filterwarnings("ignore")
@@ -53,20 +53,12 @@ def calc_cases(case_num, deviation):
     case_nums = ["%s%d" % (letters.upper(), digits) for digits in digits_all]
     return case_nums
 
-def multi_runner(case_num):
-    status = extract_status(make_request(case_num))
-    sys.stdout.write("%s %s\n" % (case_num, status or "unknown"))
-
 def main():
     args = arg_parser()
     case_nums = calc_cases(args.case_num, args.deviation)
-    jobs = []
     for case_num in case_nums:
-        j = multiprocessing.Process(target=multi_runner, args=(case_num,))
-        jobs.append(j)
-        j.start()
-    for j in jobs:
-        j.join()
+        status = extract_status(make_request(case_num))
+        print "%s %s" % (case_num, status or "unknown")
 
 if __name__ == '__main__':
     main()
