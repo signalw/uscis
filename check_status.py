@@ -48,9 +48,9 @@ def arg_parser():
     return args
 
 def calc_cases(case_num, deviation):
-    letters, digits = case_num[:3], int(case_num[3:])
+    letters, digits = case_num[:3].upper(), int(case_num[3:])
     digits_all = range(digits-deviation, digits+deviation+1)
-    case_nums = ["%s%d" % (letters.upper(), digits) for digits in digits_all]
+    case_nums = ["%s%010d" % (letters, digits) for digits in digits_all]
     return case_nums
 
 def multi_runner(case_num):
