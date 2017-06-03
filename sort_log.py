@@ -1,6 +1,6 @@
 """
-This script sorts the output of check_status,
-assume the output is stored in a file
+This script sorts the output of check_status.py,
+assuming the output is stored in a file.
 
 Usage:
     $ python sort_log.py output1.log output2.log
