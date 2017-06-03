@@ -12,6 +12,9 @@ Options:
         The unique USCIS case number with 3 letters and 10 digits.
     -d, --deviation
         The number of cases ahead of and after the CASE_NUM.
+
+Example:
+    $ python check_status.py -c YSC1790987654 -d 10
 ```
 
 File `run.sh` writes the status of each case into a log file and summarizes the approval rate.
@@ -27,4 +30,7 @@ Options:
         The number of cases ahead of and after the CASE_NUM.
     -o
         The output file that saves the status of all cases.
+
+Example:
+    $ bash run.sh -c YSC1790987654 -d 10 -o log/status.log
 ```
